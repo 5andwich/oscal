@@ -50,7 +50,10 @@ jobs:
       - name: Get Saxon-HE
         run: |
           mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get -DartifactId=Saxon-HE -DgroupId=net.sf.saxon -Dversion=$SAXON_VERSION
-      - name: Validate Content
+     # - name: Add UUID and Timestamp
+     #   run: |
+     #     run filename/python.py
+     - name: Validate Content
         run:
           bash "${GITHUB_WORKSPACE}/git-content/${CICD_DIR_PATH}/validate-content.sh" -v -o "${GITHUB_WORKSPACE}/git-content/${OSCAL_DIR_PATH}" -a "${GITHUB_WORKSPACE}/git-content" -c "${GITHUB_WORKSPACE}/git-content/${CONTENT_CONFIG_PATH}"
       - name: Auto-convert content
